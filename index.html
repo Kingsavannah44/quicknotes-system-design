@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickNotes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>QuickNotes</h1>
+      <p class="subtitle">Your notes, always within reach.</p>
+    </header>
+
+    <section class="load-section">
+      <button id="load-btn">Load Notes</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="create-section">
+      <h2>Create a Note</h2>
+      <form id="note-form" novalidate>
+        <div class="form-group">
+          <label for="title-input">Title <span class="required">*</span></label>
+          <input
+            type="text"
+            id="title-input"
+            name="title"
+            maxlength="100"
+            placeholder="Enter note title (required, max 100 chars)"
+            autocomplete="off"
+          />
+          <span class="field-error" id="title-error" role="alert"></span>
+        </div>
+        <div class="form-group">
+          <label for="body-input">Body</label>
+          <textarea
+            id="body-input"
+            name="body"
+            rows="4"
+            placeholder="Enter note body (optional)"
+          ></textarea>
+        </div>
+        <button type="submit" id="submit-btn">Create Note</button>
+      </form>
+    </section>
+
+    <section class="notes-section">
+      <h2>Notes</h2>
+      <ul id="notes-list" aria-label="Notes list"></ul>
+    </section>
+  </div>
+
+  <script src="api.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+/* ============================================================
+   QuickNotes – style.css
+   Basic, readable styling with distinct success / error states.
+   ============================================================ */
+
+/* ----- Reset & base ---------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: #f0f2f5;
+  color: #1a1a2e;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* ----- Layout container ------------------------------------ */
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ----- Header ---------------------------------------------- */
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #16213e;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+/* ----- Sections -------------------------------------------- */
+
+section {
+  background: #ffffff;
+  border: 1px solid #dde1e7;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+section h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #16213e;
+  border-bottom: 2px solid #e8eaf0;
+  padding-bottom: 0.5rem;
+}
+
+/* ----- Buttons --------------------------------------------- */
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.25rem;
+  transition: background-color 0.18s ease, opacity 0.18s ease, transform 0.1s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Primary button (Load / Create) */
+#load-btn,
+#submit-btn {
+  background-color: #0f3460;
+  color: #ffffff;
+}
+
+#load-btn:hover:not(:disabled),
+#submit-btn:hover:not(:disabled) {
+  background-color: #16213e;
+}
+
+/* Delete button */
+.delete-btn {
+  background-color: #e63946;
+  color: #ffffff;
+  font-size: 0.82rem;
+  padding: 0.3rem 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.delete-btn:hover:not(:disabled) {
+  background-color: #c1121f;
+}
+
+/* ----- Status paragraph ------------------------------------ */
+
+#status {
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  min-height: 1.4em;
+  border-radius: 5px;
+  padding: 0.4rem 0.75rem;
+  transition: background-color 0.2s ease;
+}
+
+/* No type – neutral / hidden */
+#status:empty {
+  padding: 0;
+}
+
+/* Loading state */
+#status.status--loading {
+  background-color: #e8f0fe;
+  color: #1a56db;
+  border-left: 4px solid #1a56db;
+}
+
+/* Success state */
+#status.status--success {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border-left: 4px solid #10b981;
+}
+
+/* Error state */
+#status.status--error {
+  background-color: #fff1f2;
+  color: #9b1c1c;
+  border-left: 4px solid #e63946;
+}
+
+/* ----- Form ------------------------------------------------ */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: #16213e;
+}
+
+.required {
+  color: #e63946;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  border: 1px solid #c4c9d4;
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  color: #1a1a2e;
+  background-color: #fafbfc;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0f3460;
+  box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.15);
+  background-color: #fff;
+}
+
+/* Inline field error */
+.field-error {
+  font-size: 0.82rem;
+  color: #e63946;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.field-error.visible {
+  display: block;
+}
+
+/* ----- Notes list ------------------------------------------ */
+
+#notes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.note-item {
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  background-color: #fafbfc;
+  transition: box-shadow 0.18s ease;
+}
+
+.note-item:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.09);
+}
+
+.note-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f3460;
+  margin-bottom: 0.35rem;
+}
+
+.note-body {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.55;
+}
+
+/* ----- Empty state ----------------------------------------- */
+
+.empty-state {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #888;
+  padding: 2rem 1rem;
+  border: 2px dashed #dde1e7;
+  border-radius: 8px;
+}
+
+/* ----- Responsive ------------------------------------------ */
+
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  section {
+    padding: 1.1rem;
+  }
+}
